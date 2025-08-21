@@ -1,7 +1,7 @@
 {
-  "name": "status-bar-timer",
-  "displayName": "Status Bar Timer",
-  "description": "A simple timer in the status bar.",
+  "name": "simple-visual-bar-timer",
+  "displayName": "Simple Visual Bar Timer",
+  "description": "A simple visual bar timer in the status bar.",
   "version": "0.0.1",
   "publisher": "Office L",
   "engines": {
@@ -15,20 +15,20 @@
   "contributes": {
     "commands": [
       {
-        "command": "status-bar-timer.startTimer",
+        "command": "simple-visual-bar-timer.startTimer",
         "title": "Start Timer"
       },
       {
-        "command": "status-bar-timer.stopTimer",
+        "command": "simple-visual-bar-timer.stopTimer",
         "title": "Stop Timer"
       }
     ],
     "configuration": {
-      "title": "Status Bar Timer",
+      "title": "Simple Visual Bar Timer",
       "properties": {
-        "statusBarTimer.defaultDuration": {
+        "simpleVisualBarTimer.defaultDuration": {
           "type": "number",
-          "default": 30,
+          "default": 25,
           "description": "The default duration for the timer in minutes."
         }
       }
@@ -36,6 +36,7 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
+    "vscode:vsix": "npx vsce package",
     "compile": "webpack",
     "watch": "webpack --watch",
     "package": "webpack --mode production --devtool hidden-source-map"
