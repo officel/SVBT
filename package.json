@@ -2,7 +2,22 @@
   "name": "simple-visual-bar-timer",
   "displayName": "Simple Visual Bar Timer",
   "description": "A simple visual bar timer in the status bar.",
+  "keywords": [
+    "simple",
+    "visual",
+    "bar",
+    "timer",
+    "status bar"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/officel/SVBT"
+  },
+  "bugs": {
+    "url": "https://github.com/officel/SVBT/issues"
+  },
   "version": "0.0.1",
+  "license": "MIT",
   "publisher": "Office L",
   "engines": {
     "vscode": "^1.75.0"
@@ -10,17 +25,19 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
   "main": "./dist/extension.js",
   "contributes": {
     "commands": [
       {
         "command": "simple-visual-bar-timer.startTimer",
-        "title": "Start Timer"
+        "title": "SVBT Start Timer"
       },
       {
         "command": "simple-visual-bar-timer.stopTimer",
-        "title": "Stop Timer"
+        "title": "SVBT Stop Timer"
       }
     ],
     "configuration": {
@@ -37,7 +54,7 @@
   "scripts": {
     "vscode:prepublish": "npm run package",
     "vscode:vsix": "npx vsce package",
-    "compile": "webpack",
+    "compile": "webpack --mode development",
     "watch": "webpack --watch",
     "package": "webpack --mode production --devtool hidden-source-map"
   },
