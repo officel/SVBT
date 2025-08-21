@@ -4,21 +4,21 @@ import { Timer } from "./Timer";
 let timer: Timer | null = null;
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log('Congratulations, your extension "status-bar-timer" is now active!');
+  console.log('Congratulations, your extension "simple-visual-bar-timer" is now active!');
 
   const statusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-  statusBarItem.command = "status-bar-timer.startTimer";
+  statusBarItem.command = "simple-visual-bar-timer.startTimer";
   statusBarItem.text = "▶ Start Timer";
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
 
-  let disposable = vscode.commands.registerCommand("status-bar-timer.startTimer", async () => {
+  let disposable = vscode.commands.registerCommand("simple-visual-bar-timer.startTimer", async () => {
     if (timer) {
       return;
     }
 
-    const config = vscode.workspace.getConfiguration("statusBarTimer");
-    const defaultDuration = config.get<number>("defaultDuration", 30);
+    const config = vscode.workspace.getConfiguration("simpleVisualBarTimer");
+    const defaultDuration = config.get<number>("defaultDuration", 25);
 
     const durationInput = await vscode.window.showInputBox({
       prompt: "Enter timer duration in minutes (1-60)",
@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext) {
         statusBarItem.text = `⦿ ${formattedTime} ${progressBar}`;
       };
 
-      statusBarItem.command = "status-bar-timer.stopTimer";
+      statusBarItem.command = "simple-visual-bar-timer.stopTimer";
       updateStatusBar(totalSeconds);
 
       timer.on("tick", (remainingSeconds: number) => {
@@ -64,7 +64,7 @@ export function activate(context: vscode.ExtensionContext) {
 
       timer.on("done", () => {
         statusBarItem.text = "⧁ Start Timer";
-        statusBarItem.command = "status-bar-timer.startTimer";
+        statusBarItem.command = "simple-visual-bar-timer.startTimer";
         timer = null;
       });
 
@@ -72,12 +72,12 @@ export function activate(context: vscode.ExtensionContext) {
     }
   });
 
-  const stopTimerCommand = vscode.commands.registerCommand("status-bar-timer.stopTimer", () => {
+  const stopTimerCommand = vscode.commands.registerCommand("simple-visual-bar-timer.stopTimer", () => {
     if (timer) {
       timer.stop();
       timer = null;
       statusBarItem.text = "⧁ Start Timer";
-      statusBarItem.command = "status-bar-timer.startTimer";
+      statusBarItem.command = "simple-visual-bar-timer.startTimer";
     }
   });
 
