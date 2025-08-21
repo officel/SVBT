@@ -1,4 +1,4 @@
-import { EventEmitter } from 'events';
+import { EventEmitter } from "events";
 
 export class Timer extends EventEmitter {
   private timerId: NodeJS.Timeout | null = null;
@@ -17,10 +17,10 @@ export class Timer extends EventEmitter {
     this.timerId = setInterval(() => {
       this.remainingSeconds--;
       if (this.remainingSeconds >= 0) {
-        this.emit('tick', this.remainingSeconds);
+        this.emit("tick", this.remainingSeconds);
       } else {
         this.stop();
-        this.emit('done');
+        this.emit("done");
       }
     }, 1000);
   }
