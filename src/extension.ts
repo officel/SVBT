@@ -4,16 +4,14 @@ import { Timer } from "./Timer";
 let timer: Timer | null = null;
 
 export function activate(context: vscode.ExtensionContext) {
-  console.log(
-    'Congratulations, your extension "simple-visual-bar-timer" is now active!'
-  );
-
   const statusBarItem = vscode.window.createStatusBarItem(
     vscode.StatusBarAlignment.Left,
-    100
+    -9999
   );
+  statusBarItem.name = "Simple Visual Bar Timer";
+  statusBarItem.text = "⧁ SVBT";
+  statusBarItem.tooltip = "Simple Visual Bar Timer";
   statusBarItem.command = "simple-visual-bar-timer.startTimer";
-  statusBarItem.text = "▶ Start Timer";
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
 
