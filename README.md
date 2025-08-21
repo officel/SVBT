@@ -12,16 +12,23 @@ A simple visual bar timer in the VS Code status bar.
 
 ## How to Use
 
-1.  **Start the Timer**:
-    - Click the **▶ Start Timer** button in the status bar.
-    - Or, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and run the **Start Timer** command.
-2.  **Set Duration**:
-    - An input box will appear. Enter the desired duration in minutes (1-60).
-3.  **Monitor Progress**:
-    - The status bar will show a stop button (⦿), the remaining time, and a progress bar.
-4.  **Stop the Timer**:
-    - Click the stop button in the status bar.
-    - Or, open the Command Palette and run the **Stop Timer** command.
+### 1. Start the Timer
+
+- Click the **▶ Start Timer** button in the status bar.
+- Or, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and run the **Start Timer** command.
+
+### 2. Set Duration
+
+- An input box will appear. Enter the desired duration in minutes (1-60).
+
+### 3. Monitor Progress
+
+- The status bar will show a stop button (⦿), the remaining time, and a progress bar.
+
+### 4. Stop the Timer
+
+- Click the stop button in the status bar.
+- Or, open the Command Palette and run the **Stop Timer** command.
 
 ## Configuration
 
