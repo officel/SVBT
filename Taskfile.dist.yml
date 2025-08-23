@@ -6,6 +6,7 @@ tasks:
     cmds:
       # - task --list --sort alphanumeric -t {{.TASKFILE}}
       - task --list --sort none -t {{.TASKFILE}}
+      - gh issue list
     silent: true
 
   watch:
