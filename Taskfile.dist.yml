@@ -1,0 +1,54 @@
+# yaml-language-server: $schema=https://taskfile.dev/schema.json
+version: "3"
+
+tasks:
+  default:
+    cmds:
+      # - task --list --sort alphanumeric -t {{.TASKFILE}}
+      - task --list --sort none -t {{.TASKFILE}}
+    silent: true
+
+  watch:
+    desc: for watching file changes
+    aliases:
+      - w
+    cmds:
+      - npm run watch
+
+  dev:
+    desc: for development
+    aliases:
+      - d
+    cmds:
+      - npm run dev
+
+  package:
+    desc: for production
+    aliases:
+      - p
+    cmds:
+      - npm run package
+
+  vscode:vsix:
+    desc: create a .vsix file
+    aliases:
+      - vsix
+    cmds:
+      - npx vsce package
+
+  vscode:prepublish:
+    desc: run tasks before publishing
+    aliases:
+      - vpp
+    cmds:
+      - npm run package
+
+  vscode:publish:
+    desc: publish for Marketplace
+    summary: |-
+      マケプレで公開する。
+      package.json のバージョンを更新してから実行すること。
+    aliases:
+      - vp
+    cmds:
+      - npx vsce publish
