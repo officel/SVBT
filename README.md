@@ -1,5 +1,7 @@
 # SVBT - Simple Visual Bar Timer -
 
+<img src="./resources/icon.png" width=64  />
+
 A simple visual bar timer in the VS Code status bar.
 
 ## Features
@@ -14,16 +16,23 @@ A simple visual bar timer in the VS Code status bar.
 
 ### 1. Start the Timer
 
-- Click the **▶ Start Timer** button in the status bar.
+- Click the **▶ Start Timer** button in the status bar(Immediately after startup, **SVBT** ).
 - Or, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`) and run the **Start Timer** command.
+
+![alt text](./resources/vscode_svbt.png)
 
 ### 2. Set Duration
 
 - An input box will appear. Enter the desired duration in minutes (1-60).
 
+![alt text](./resources/vscode_enter.png)
+
 ### 3. Monitor Progress
 
 - The status bar will show a stop button (⦿), the remaining time, and a progress bar.
+
+![alt text](./resources/vscode_0958.png)
+![alt text](./resources/vscode_0006.png)
 
 ### 4. Stop the Timer
 
