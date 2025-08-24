@@ -58,6 +58,13 @@
           "type": "string",
           "default": "▯",
           "description": "The character representing the elapsed time."
+        },
+        "simpleVisualBarTimer.barCount": {
+          "type": "number",
+          "default": 10,
+          "minimum": 5,
+          "maximum": 30,
+          "description": "The number of bars to display in the timer."
         }
       }
     }
