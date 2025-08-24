@@ -48,6 +48,16 @@
           "type": "number",
           "default": 25,
           "description": "The default duration for the timer in minutes."
+        },
+        "simpleVisualBarTimer.remainingChar": {
+          "type": "string",
+          "default": "▮",
+          "description": "The character representing the remaining time."
+        },
+        "simpleVisualBarTimer.elapsedChar": {
+          "type": "string",
+          "default": "▯",
+          "description": "The character representing the elapsed time."
         }
       }
     }
