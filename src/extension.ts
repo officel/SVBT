@@ -1,6 +1,10 @@
 import * as vscode from "vscode";
 import { Timer } from "./Timer";
 
+const START_TIMER_COMMAND = "simple-visual-bar-timer.startTimer";
+const STOP_TIMER_COMMAND = "simple-visual-bar-timer.stopTimer";
+const START_TIMER_TEXT = "⧁ Start Timer";
+
 let timer: Timer | null = null;
 
 export function activate(context: vscode.ExtensionContext) {
@@ -11,12 +15,12 @@ export function activate(context: vscode.ExtensionContext) {
   statusBarItem.name = "Simple Visual Bar Timer";
   statusBarItem.text = "⧁ SVBT";
   statusBarItem.tooltip = "Simple Visual Bar Timer";
-  statusBarItem.command = "simple-visual-bar-timer.startTimer";
+  statusBarItem.command = START_TIMER_COMMAND;
   statusBarItem.show();
   context.subscriptions.push(statusBarItem);
 
   let disposable = vscode.commands.registerCommand(
-    "simple-visual-bar-timer.startTimer",
+    START_TIMER_COMMAND,
     async () => {
       if (timer) {
         return;
@@ -62,7 +66,7 @@ export function activate(context: vscode.ExtensionContext) {
           statusBarItem.text = `⦿ ${formattedTime} ${progressBar}`;
         };
 
-        statusBarItem.command = "simple-visual-bar-timer.stopTimer";
+        statusBarItem.command = STOP_TIMER_COMMAND;
         updateStatusBar(totalSeconds);
 
         timer.on("tick", (remainingSeconds: number) => {
@@ -70,8 +74,8 @@ export function activate(context: vscode.ExtensionContext) {
         });
 
         timer.on("done", () => {
-          statusBarItem.text = "⧁ Start Timer";
-          statusBarItem.command = "simple-visual-bar-timer.startTimer";
+          statusBarItem.text = START_TIMER_TEXT;
+          statusBarItem.command = START_TIMER_COMMAND;
           timer = null;
         });
 
@@ -81,13 +85,13 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   const stopTimerCommand = vscode.commands.registerCommand(
-    "simple-visual-bar-timer.stopTimer",
+    STOP_TIMER_COMMAND,
     () => {
       if (timer) {
         timer.stop();
         timer = null;
-        statusBarItem.text = "⧁ Start Timer";
-        statusBarItem.command = "simple-visual-bar-timer.startTimer";
+        statusBarItem.text = START_TIMER_TEXT;
+        statusBarItem.command = START_TIMER_COMMAND;
       }
     }
   );
