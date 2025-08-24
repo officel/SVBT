@@ -41,13 +41,22 @@ A simple visual bar timer in the VS Code status bar.
 
 ## Configuration
 
-You can set a default duration for the timer in your VS Code settings.
+You can customize the timer by changing the following settings in your VS Code `settings.json` file:
 
-- `simpleVisualBarTimer.defaultDuration`: The default timer duration in minutes (default: `25`).
+- `simpleVisualBarTimer.defaultDuration`: The default timer duration in minutes.
+  - Default: `25`
+- `simpleVisualBarTimer.remainingChar`: The character used to represent the remaining time in the progress bar.
+  - Default: `▮`
+- `simpleVisualBarTimer.elapsedChar`: The character used to represent the elapsed time in the progress bar.
+  - Default: `▯`
+
+### Example Configuration
 
 ```json
 {
-  "simpleVisualBarTimer.defaultDuration": 25
+  "simpleVisualBarTimer.defaultDuration": 10,
+  "simpleVisualBarTimer.remainingChar": "⭓",
+  "simpleVisualBarTimer.elapsedChar": "⭔"
 }
 ```
 
