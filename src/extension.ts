@@ -53,14 +53,6 @@ export function activate(context: vscode.ExtensionContext) {
           const progress = Math.floor(
             ((totalSeconds - remainingSeconds) / totalSeconds) * 10
           );
-          // 絵文字はズレが大きいのでなしの方向で
-          // const progressBar = "🔳".repeat(progress) + "🔲".repeat(10 - progress);
-
-          // 進捗式（経過時間が塗られる）もいいけど
-          // const progressBar = "⭓".repeat(progress) + "⭔".repeat(10 - progress);
-
-          // カウントダウン式（残り時間が減るように見える）
-          // const progressBar = "⭓".repeat(10 - progress) + "⭔".repeat(progress); // OK
           const progressBar =
             remainingChar.repeat(10 - progress) + elapsedChar.repeat(progress);
 
