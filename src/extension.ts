@@ -24,6 +24,8 @@ export function activate(context: vscode.ExtensionContext) {
 
       const config = vscode.workspace.getConfiguration("simpleVisualBarTimer");
       const defaultDuration = config.get<number>("defaultDuration", 25);
+      const remainingChar = config.get<string>("remainingChar", "▮");
+      const elapsedChar = config.get<string>("elapsedChar", "▯");
 
       const durationInput = await vscode.window.showInputBox({
         prompt: "Enter timer duration in minutes (1-60)",
@@ -59,7 +61,8 @@ export function activate(context: vscode.ExtensionContext) {
 
           // カウントダウン式（残り時間が減るように見える）
           // const progressBar = "⭓".repeat(10 - progress) + "⭔".repeat(progress); // OK
-          const progressBar = "▮".repeat(10 - progress) + "▯".repeat(progress);
+          const progressBar =
+            remainingChar.repeat(10 - progress) + elapsedChar.repeat(progress);
 
           statusBarItem.text = `⦿ ${formattedTime} ${progressBar}`;
         };
