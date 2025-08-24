@@ -49,6 +49,10 @@ You can customize the timer by changing the following settings in your VS Code `
   - Default: `▮`
 - `simpleVisualBarTimer.elapsedChar`: The character used to represent the elapsed time in the progress bar.
   - Default: `▯`
+- `simpleVisualBarTimer.barCount`: The number of bars to display in the timer.
+  - Default: `10`
+  - Minimum: `5`
+  - Maximum: `30`
 
 ### Example Configuration
 
@@ -56,7 +60,8 @@ You can customize the timer by changing the following settings in your VS Code `
 {
   "simpleVisualBarTimer.defaultDuration": 10,
   "simpleVisualBarTimer.remainingChar": "⭓",
-  "simpleVisualBarTimer.elapsedChar": "⭔"
+  "simpleVisualBarTimer.elapsedChar": "⭔",
+  "simpleVisualBarTimer.barCount": 20
 }
 ```
 

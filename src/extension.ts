@@ -26,6 +26,8 @@ export function activate(context: vscode.ExtensionContext) {
       const defaultDuration = config.get<number>("defaultDuration", 25);
       const remainingChar = config.get<string>("remainingChar", "▮");
       const elapsedChar = config.get<string>("elapsedChar", "▯");
+      let barCount = config.get<number>("barCount", 10);
+      barCount = Math.max(5, Math.min(30, barCount));
 
       const durationInput = await vscode.window.showInputBox({
         prompt: "Enter timer duration in minutes (1-60)",
@@ -51,10 +53,11 @@ export function activate(context: vscode.ExtensionContext) {
             .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
           const progress = Math.floor(
-            ((totalSeconds - remainingSeconds) / totalSeconds) * 10
+            ((totalSeconds - remainingSeconds) / totalSeconds) * barCount
           );
           const progressBar =
-            remainingChar.repeat(10 - progress) + elapsedChar.repeat(progress);
+            remainingChar.repeat(barCount - progress) +
+            elapsedChar.repeat(progress);
 
           statusBarItem.text = `⦿ ${formattedTime} ${progressBar}`;
         };
