@@ -1,28 +1,20 @@
-name: Release
+# リリースするワークフロー
+name: Publish Release
 
 on:
-  workflow_dispatch:
-    inputs:
-      version:
-        description: "The version to release (e.g., patch, minor, major, 1.2.3)"
-        required: true
-        default: "patch"
+  push:
+    tags:
+      - "v*.*.*"
 
 jobs:
-  release:
+  publish:
     permissions:
-      contents: write
-      issues: write
-      pull-requests: write
+      contents: read
     runs-on: ubuntu-latest
-    timeout-minutes: 5
 
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          # To make sure we can push to the repo
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -33,22 +25,5 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Configure Git
-        run: |
-          git config user.name "${{ github.actor }}"
-          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
-
-      - name: Bump version and create changelog
-        run: |
-          npm version ${{ github.event.inputs.version }} -m "chore(release): %s"
-          git push --follow-tags
-
       - name: Publish to VS Code Marketplace
         run: npx vsce publish --pat ${{ secrets.VSCE_PAT }}
-
-      - name: Create GitHub Release
-        run: |
-          npx conventional-changelog-cli -p angular --release-count 1 > release-notes.md
-          gh release create "$(git describe --tags --abbrev=0)" --notes-file release-notes.md
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
