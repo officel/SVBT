@@ -23,6 +23,13 @@ tasks:
     cmds:
       - npm run dev
 
+  test:
+    desc: for running tests
+    aliases:
+      - test
+    cmds:
+      - npm run test
+
   package:
     desc: for production
     aliases:
