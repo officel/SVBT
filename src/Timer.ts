@@ -16,9 +16,8 @@ export class Timer extends EventEmitter {
 
     this.timerId = setInterval(() => {
       this.remainingSeconds--;
-      if (this.remainingSeconds >= 0) {
-        this.emit("tick", this.remainingSeconds);
-      } else {
+      this.emit("tick", this.remainingSeconds);
+      if (this.remainingSeconds <= 0) {
         this.stop();
         this.emit("done");
       }
