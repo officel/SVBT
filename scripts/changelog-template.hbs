@@ -1,0 +1,10 @@
+## v{{version}} - {{date}}
+
+{{#each commitGroups}}
+### {{title}}
+
+{{#each commits}}
+- {{#if scope}}**{{scope}}:** {{/if}}{{subject}}
+{{/each}}
+
+{{/each}}

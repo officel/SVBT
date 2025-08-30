@@ -60,3 +60,21 @@ tasks:
       - vp
     cmds:
       - npx vsce publish
+
+  pre-release:
+    desc: run tasks before releasing
+    aliases:
+      - pr
+    vars:
+      INPUT_VERSION: '{{ default "patch" .V }}'
+      # ex: task pr V=1.0.0
+      # デフォルトは patch なので、 task pr とするだけでよい
+      VERSION:
+        sh: |
+          npm version {{.INPUT_VERSION}} --no-git-tag-version | tail -n 1
+      # package.json と package-lock.json の version が更新される
+    cmds:
+      - echo {{.INPUT_VERSION}}
+      - echo {{.VERSION}}
+      - npm ci
+      - npm run changelog
