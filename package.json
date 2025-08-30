@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/officel/SVBT/issues"
   },
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "publisher": "officel",
   "icon": "resources/icon.png",
@@ -87,8 +87,14 @@
     "ts-jest": "^29.4.1",
     "ts-loader": "^9.5.4",
     "typescript": "^5.9.2",
-    "vsce": "^2.15.0",
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "@vscode/vsce": "^3.6.0"
+  },
+  "overrides": {
+    "rimraf": "^4.0.0",
+    "glob": "^9.0.0"
   }
 }
