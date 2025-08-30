@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/officel/SVBT/issues"
   },
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "publisher": "officel",
   "icon": "resources/icon.png",
@@ -69,6 +69,7 @@
       }
     }
   },
+  "type": "module",
   "scripts": {
     "watch": "webpack --watch",
     "test": "jest",
@@ -76,7 +77,7 @@
     "package": "webpack --mode production --devtool hidden-source-map",
     "vscode:vsix": "npx vsce package",
     "vscode:prepublish": "npm run package",
-    "postversion": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md && git commit --amend --no-edit"
+    "changelog": "node scripts/update-changelog.js"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
