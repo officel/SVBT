@@ -1,17 +1,20 @@
 # Changelog
 
-## [0.0.6](https://github.com/officel/SVBT/compare/v0.0.2...v0.0.6) (2025-08-30)
-
-### Features
-
-- Add tests and CI workflow ([#27](https://github.com/officel/SVBT/issues/27)) ([83d53f0](https://github.com/officel/SVBT/commit/83d53f0fd8babc088f0260ed3d2a4fdd5a889123))
-- **ci:** release workflow ([#28](https://github.com/officel/SVBT/issues/28)) ([8eef6bb](https://github.com/officel/SVBT/commit/8eef6bbbc858da4d2b82fb2086ce6eb1991ff623)), closes [#11](https://github.com/officel/SVBT/issues/11)
-- **ci:** release workflows ([#29](https://github.com/officel/SVBT/issues/29)) ([ecb8d71](https://github.com/officel/SVBT/commit/ecb8d714da93cd1b9a47d4ec56f1f8a886e8c735)), closes [#28](https://github.com/officel/SVBT/issues/28)
-- pre-release by task ([cab5dd8](https://github.com/officel/SVBT/commit/cab5dd88c308ab61d4c27c78ac148a66c25c1b20))
+## [0.0.7](https://github.com/officel/SVBT/compare/v0.0.2...v0.0.7) (2025-08-30)
 
 ### Bug Fixes
 
 - **ci:** on.push.tags.v\* ([#30](https://github.com/officel/SVBT/issues/30)) ([7be0fde](https://github.com/officel/SVBT/commit/7be0fdef47866461c6a38a8967ddb013897c1ca0))
+- **icon:** icon.png cleaning ([#36](https://github.com/officel/SVBT/issues/36)) ([7d53b76](https://github.com/officel/SVBT/commit/7d53b7627929e694d292c810babee39f4ba21401))
+- rename webpack.config.js -> webpack.config.cjs ([#34](https://github.com/officel/SVBT/issues/34)) ([e64d46b](https://github.com/officel/SVBT/commit/e64d46b4d6f0eac816d51cbac8a4d6ef0a380512))
+
+### Features
+
+- Add tests and CI workflow ([#27](https://github.com/officel/SVBT/issues/27)) ([83d53f0](https://github.com/officel/SVBT/commit/83d53f0fd8babc088f0260ed3d2a4fdd5a889123))
+- CHANGELOG.md auto update task ([#33](https://github.com/officel/SVBT/issues/33)) ([987144d](https://github.com/officel/SVBT/commit/987144d35c61f40d00cc20b6e9f2fc0f7115d554))
+- **ci:** release workflow ([#28](https://github.com/officel/SVBT/issues/28)) ([8eef6bb](https://github.com/officel/SVBT/commit/8eef6bbbc858da4d2b82fb2086ce6eb1991ff623)), closes [#11](https://github.com/officel/SVBT/issues/11)
+- **ci:** release workflows ([#29](https://github.com/officel/SVBT/issues/29)) ([ecb8d71](https://github.com/officel/SVBT/commit/ecb8d714da93cd1b9a47d4ec56f1f8a886e8c735)), closes [#28](https://github.com/officel/SVBT/issues/28)
+- **vscode:** use version ^1.100.0 ([#35](https://github.com/officel/SVBT/issues/35)) ([f5c589e](https://github.com/officel/SVBT/commit/f5c589e5a0b62c1ca0201ee9b0bb4bc0f54b385e))
 
 ## 0.0.2 (2025-08-25)
 
