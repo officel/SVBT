@@ -97,5 +97,12 @@
   "overrides": {
     "rimraf": "^4.0.0",
     "glob": "^9.0.0"
-  }
+  },
+  "files": [
+    "dist/extension.js",
+    "resources/icon.png",
+    "package.json",
+    "README.md",
+    "LICENSE"
+  ]
 }
