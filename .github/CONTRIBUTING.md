@@ -15,16 +15,16 @@ I appreciate your consideration to contribute to this project! This document is 
 
 1. Clone the repository
 
-    ```bash
-    git clone https://github.com/officel/SVBT.git
-    ```
+   ```bash
+   git clone https://github.com/officel/SVBT.git
+   ```
 
 2. Move to the directory and install dependencies
 
-    ```bash
-    cd SVBT
-    npm install
-    ```
+   ```bash
+   cd SVBT
+   npm install
+   ```
 
 ### Development
 
@@ -42,7 +42,7 @@ If you find a bug or have a feature request, please open an issue on GitHub.
 1. Check [the Issue Tracker](https://github.com/officel/SVBT/issues) for existing issues.
 2. When requesting a new issue or feature, Please create a new issue. Be as thorough as possible in including all necessary information.
 
-### Development
+### Check Development
 
 1. Check [the Issue Tracker](https://github.com/officel/SVBT/issues), make sure if there is anything relevant to the problem you are trying to solve.
 2. Keep the repository you did folk up to date.
@@ -78,7 +78,10 @@ If you find a bug or have a feature request, please open an issue on GitHub.
   - `revert`: reverts a previous commit.
 
 > [!NOTE]
-> If there is a single commit in the pull request, the commit message must be the same as a pull request title. Because the merge strategy in this repository is "Squash and merge". When you "Squash and merge" a pull request on a branch that has only one commit, the default commit message will be the commit message in that branch.
+> If there is a single commit in the pull request, the commit message must be the same as a pull request title.
+> Because the merge strategy in this repository is "Squash and merge".
+> When you "Squash and merge" a pull request on a branch that has only one commit,
+> the default commit message will be the commit message in that branch.
 >
 > cf. [About pull request merges - GitHub Docs](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/incorporating-changes-from-a-pull-request/about-pull-request-merges#merge-message-for-a-squash-merge)
 
