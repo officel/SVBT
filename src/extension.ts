@@ -4,6 +4,7 @@ import { Timer } from "./Timer";
 const START_TIMER_COMMAND = "simple-visual-bar-timer.startTimer";
 const STOP_TIMER_COMMAND = "simple-visual-bar-timer.stopTimer";
 const START_TIMER_TEXT = "⧁ Start Timer";
+const MAX_TIMER_DURATION_MINUTES = 200;
 
 let timer: Timer | null = null;
 
@@ -34,15 +35,10 @@ export function activate(context: vscode.ExtensionContext) {
       barCount = Math.max(5, Math.min(30, barCount));
 
       const durationInput = await vscode.window.showInputBox({
-        prompt: "Enter timer duration in minutes (1-60)",
+        prompt: `Enter timer duration in minutes (1-${MAX_TIMER_DURATION_MINUTES})`,
         value: defaultDuration.toString(),
-        validateInput: (value) => {
-          const number = parseInt(value, 10);
-          if (isNaN(number) || number < 1 || number > 60) {
-            return "Please enter a number between 1 and 60.";
-          }
-          return null;
-        },
+        validateInput: (value) =>
+          validateDurationInput(value, MAX_TIMER_DURATION_MINUTES),
       });
 
       if (durationInput) {
@@ -104,4 +100,15 @@ export function deactivate() {
     timer.stop();
     timer = null;
   }
+}
+
+export function validateDurationInput(
+  value: string,
+  maxDuration: number
+): string | null {
+  const number = parseInt(value, 10);
+  if (isNaN(number) || number < 1 || number > maxDuration) {
+    return `Please enter a number between 1 and ${maxDuration}.`;
+  }
+  return null;
 }
