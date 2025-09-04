@@ -29,7 +29,7 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "main": "./dist/extension.js",
+  "main": "./dist/extension.cjs",
   "contributes": {
     "commands": [
       {
@@ -99,7 +99,7 @@
     "glob": "^9.0.0"
   },
   "files": [
-    "dist/extension.js",
+    "dist/extension.cjs",
     "resources/icon.png",
     "package.json",
     "README.md",
