@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.0.8](https://github.com/officel/SVBT/compare/v0.0.7...v0.0.8) (2025-09-04)
+
+### Features
+
+- Variableize max duration and add tests ([#53](https://github.com/officel/SVBT/issues/53)) ([6939748](https://github.com/officel/SVBT/commit/6939748be4fc16901615fdcaf48100b4a254c432))
+- リポジトリにサポートファイル類を追加
+
+### Bug Fixes
+
+- CODEOWNERS ([#48](https://github.com/officel/SVBT/issues/48)) ([d4e29ff](https://github.com/officel/SVBT/commit/d4e29ffed2b781a687c58bc8e154df2648521e07)), closes [#47](https://github.com/officel/SVBT/issues/47)
+
 ## [0.0.7](https://github.com/officel/SVBT/compare/v0.0.2...v0.0.7) (2025-08-30)
 
 ### Bug Fixes
