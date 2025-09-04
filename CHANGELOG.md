@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.9](https://github.com/officel/SVBT/compare/v0.0.7...v0.0.9) (2025-09-04)
+
+### Bug Fixes
+
+- Resolve ES module activation error ([#55](https://github.com/officel/SVBT/issues/55)) ([a15868e](https://github.com/officel/SVBT/commit/a15868e545054c8b1dd05be3f864f269db7a847a))
+
 ## [0.0.8](https://github.com/officel/SVBT/compare/v0.0.7...v0.0.8) (2025-09-04)
 
 ### Features
