@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.10](https://github.com/officel/SVBT/compare/v0.0.9...v0.0.10) (2025-09-07)
+
+### Features
+
+- count up timer ([#58](https://github.com/officel/SVBT/issues/58)) ([a6a7e24](https://github.com/officel/SVBT/commit/a6a7e2425003d8d6f2fc41d55f607c466efc3ce1))
+
 ## [0.0.9](https://github.com/officel/SVBT/compare/v0.0.7...v0.0.9) (2025-09-04)
 
 ### Bug Fixes
