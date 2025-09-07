@@ -53,6 +53,8 @@ You can customize the timer by changing the following settings in your VS Code `
   - Default: `10`
   - Minimum: `5`
   - Maximum: `30`
+- `simpleVisualBarTimer.timerMode`: The mode of the timer. `countdown` will count down from the duration, `countup` will count up to the duration.
+  - Default: `countdown`
 
 ### Example Configuration
 
@@ -61,7 +63,8 @@ You can customize the timer by changing the following settings in your VS Code `
   "simpleVisualBarTimer.defaultDuration": 10,
   "simpleVisualBarTimer.remainingChar": "⭓",
   "simpleVisualBarTimer.elapsedChar": "⭔",
-  "simpleVisualBarTimer.barCount": 20
+  "simpleVisualBarTimer.barCount": 20,
+  "simpleVisualBarTimer.timerMode": "countdown"
 }
 ```
 
