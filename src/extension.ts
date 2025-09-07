@@ -54,17 +54,20 @@ export function activate(context: vscode.ExtensionContext) {
             .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
           let progress;
+          let progressBar;
           if (timerMode === "countdown") {
             progress = Math.floor(
               ((totalSeconds - currentSeconds) / totalSeconds) * barCount
             );
+            progressBar =
+              remainingChar.repeat(barCount - progress) +
+              elapsedChar.repeat(progress);
           } else {
             progress = Math.floor((currentSeconds / totalSeconds) * barCount);
+            progressBar =
+              remainingChar.repeat(progress) +
+              elapsedChar.repeat(barCount - progress);
           }
-
-          const progressBar =
-            remainingChar.repeat(barCount - progress) +
-            elapsedChar.repeat(progress);
 
           statusBarItem.text = `⦿ ${formattedTime} ${progressBar}`;
         };
