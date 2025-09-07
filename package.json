@@ -65,6 +65,15 @@
           "minimum": 5,
           "maximum": 30,
           "description": "The number of bars to display in the timer."
+        },
+        "simpleVisualBarTimer.timerMode": {
+          "type": "string",
+          "enum": [
+            "countdown",
+            "countup"
+          ],
+          "default": "countdown",
+          "description": "The mode of the timer. 'countdown' will count down from the duration, 'countup' will count up to the duration."
         }
       }
     }

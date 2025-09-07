@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { Timer } from "./Timer";
+import { Timer, TimerMode } from "./Timer";
 
 const START_TIMER_COMMAND = "simple-visual-bar-timer.startTimer";
 const STOP_TIMER_COMMAND = "simple-visual-bar-timer.stopTimer";
@@ -33,6 +33,7 @@ export function activate(context: vscode.ExtensionContext) {
       const elapsedChar = config.get<string>("elapsedChar", "▯");
       let barCount = config.get<number>("barCount", 10);
       barCount = Math.max(5, Math.min(30, barCount));
+      const timerMode = config.get<TimerMode>("timerMode", "countdown");
 
       const durationInput = await vscode.window.showInputBox({
         prompt: `Enter timer duration in minutes (1-${MAX_TIMER_DURATION_MINUTES})`,
@@ -43,18 +44,24 @@ export function activate(context: vscode.ExtensionContext) {
 
       if (durationInput) {
         const totalSeconds = parseInt(durationInput, 10) * 60;
-        timer = new Timer(totalSeconds);
+        timer = new Timer(totalSeconds, timerMode);
 
-        const updateStatusBar = (remainingSeconds: number) => {
-          const minutes = Math.floor(remainingSeconds / 60);
-          const seconds = remainingSeconds % 60;
+        const updateStatusBar = (currentSeconds: number) => {
+          const minutes = Math.floor(currentSeconds / 60);
+          const seconds = currentSeconds % 60;
           const formattedTime = `${minutes
             .toString()
             .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-          const progress = Math.floor(
-            ((totalSeconds - remainingSeconds) / totalSeconds) * barCount
-          );
+          let progress;
+          if (timerMode === "countdown") {
+            progress = Math.floor(
+              ((totalSeconds - currentSeconds) / totalSeconds) * barCount
+            );
+          } else {
+            progress = Math.floor((currentSeconds / totalSeconds) * barCount);
+          }
+
           const progressBar =
             remainingChar.repeat(barCount - progress) +
             elapsedChar.repeat(progress);
@@ -63,10 +70,10 @@ export function activate(context: vscode.ExtensionContext) {
         };
 
         statusBarItem.command = STOP_TIMER_COMMAND;
-        updateStatusBar(totalSeconds);
+        updateStatusBar(timerMode === "countdown" ? totalSeconds : 0);
 
-        timer.on("tick", (remainingSeconds: number) => {
-          updateStatusBar(remainingSeconds);
+        timer.on("tick", (currentSeconds: number) => {
+          updateStatusBar(currentSeconds);
         });
 
         timer.on("done", () => {
