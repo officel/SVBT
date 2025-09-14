@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.0.11](https://github.com/officel/SVBT/compare/v0.0.10...v0.0.11) (2025-09-14)
+
+- ドキュメントの整理など
+
 ## [0.0.10](https://github.com/officel/SVBT/compare/v0.0.9...v0.0.10) (2025-09-07)
 
 ### Features
