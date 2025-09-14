@@ -9,6 +9,32 @@ tasks:
       - gh issue list
     silent: true
 
+  work:
+    desc: how to works
+    aliases:
+      - work
+    silent: true
+    cmds:
+      - |-
+        cat <<- 'EOF'
+          $ cd ../SVBT/
+          $ gr                 # git fetch --all --prune && git checkout origin/HEAD
+          $ t                  # task
+          $ t d
+          $ t test
+
+          # VS Code の実行とデバッグで動作確認をする
+          # 問題なければコミットしてPRしてマージ
+
+          $ t pr               # 変更履歴を作成
+          $ code CHANGELOG.md  # フォーマットがいまいちなので開いて適用
+          $ gpr chore/0.0.10   # 変更履歴をコミットしてPRしてマージ
+
+          # タグを打ってプッシュすると自動でリリースされる
+          $ g tag v0.0.10
+          $ g push origin v0.0.10
+        EOF
+
   watch:
     desc: for watching file changes
     aliases:
