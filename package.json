@@ -112,6 +112,7 @@
     "resources/icon.png",
     "package.json",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "CHANGELOG.md"
   ]
 }
