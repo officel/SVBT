@@ -25,8 +25,8 @@ A simple visual bar timer in the VS Code status bar.
 - An input box will appear. Enter the desired duration in minutes (1-200).
 - Next, an input box for the task name will appear. If left blank, it will be set as "集中して作業中".
 
-![Input Duration](resources/vsc_input_duration.png)
-![Input task name](resources/vsc_input_taskname.png)
+![Input Duration](./resources/vsc_input_duration.png)
+![Input task name](./resources/vsc_input_taskname.png)
 
 ### 3. Monitor Progress
 
@@ -37,8 +37,8 @@ A simple visual bar timer in the VS Code status bar.
 - Click the stop button in the status bar.
 - Or, open the Command Palette and run the **Stop Timer** command.
 
-![Timer start](resources/vsc_timer_start.png)
-![Timer](resources/vsc_timer_z.png)
+![Timer start](./resources/vsc_timer_start.png)
+![Timer](./resources/vsc_timer_z.png)
 
 ## Configuration
 
@@ -57,7 +57,7 @@ You can customize the timer by changing the following settings in your VS Code `
 - `simpleVisualBarTimer.timerMode`: The mode of the timer. `countdown` will count down from the duration, `countup` will count up to the duration.
   - Default: `countdown`
 
-![VS Code Config](resources/vsc_config.png)
+![VS Code Config](./resources/vsc_config.png)
 
 ### Example Configuration
 
