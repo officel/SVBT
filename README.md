@@ -8,6 +8,7 @@ A simple visual bar timer in the VS Code status bar.
 
 - **Status Bar Timer**: A timer that runs in the status bar.
 - **Custom Duration**: Set a timer for any duration from 1 to 200 minutes.
+- **Task Name**: Record the task name along with the timer.
 - **Visual Feedback**: A progress bar and a `MM:SS` countdown provide clear visual feedback.
 - **Simple Controls**: Start and stop the timer directly from the status bar.
 - **Configurable**: Set a default timer duration in the settings.
@@ -21,15 +22,16 @@ A simple visual bar timer in the VS Code status bar.
 
 ![on the status bar](./resources/vscode_svbt.png)
 
-### 2. Set Duration
+### 2. Set Duration and Task Name
 
 - An input box will appear. Enter the desired duration in minutes (1-200).
+- Next, an input box for the task name will appear. If left blank, it will be set as "集中して作業中".
 
 ![input me](./resources/vscode_enter.png)
 
 ### 3. Monitor Progress
 
-- The status bar will show a stop button (⦿), the remaining time, and a progress bar.
+- The status bar will show a stop button (⦿), the remaining time, a progress bar, and the task name.
 
 ![full progress](./resources/vscode_0958.png)
 ![a bit more](./resources/vscode_0006.png)

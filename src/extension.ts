@@ -43,6 +43,12 @@ export function activate(context: vscode.ExtensionContext) {
       });
 
       if (durationInput) {
+        const taskNameInput = await vscode.window.showInputBox({
+          prompt: "Enter task name (optional)",
+          placeHolder: "集中して作業中",
+        });
+        const taskName = taskNameInput || "集中して作業中";
+
         const totalSeconds = parseInt(durationInput, 10) * 60;
         timer = new Timer(totalSeconds, timerMode);
 
@@ -69,7 +75,7 @@ export function activate(context: vscode.ExtensionContext) {
               elapsedChar.repeat(barCount - progress);
           }
 
-          statusBarItem.text = `⦿ ${formattedTime} ${progressBar}`;
+          statusBarItem.text = `⦿ ${formattedTime} ${progressBar} ${taskName}`;
         };
 
         statusBarItem.command = STOP_TIMER_COMMAND;
