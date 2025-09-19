@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.0.14](https://github.com/officel/SVBT/compare/v0.0.13...v0.0.14) (2025-09-19)
+
+### Features
+
+- new icon ([#77](https://github.com/officel/SVBT/issues/77)) ([f06dea7](https://github.com/officel/SVBT/commit/f06dea7a4e1870dcc999fb4d34305cbf288b43b1)), closes [#72](https://github.com/officel/SVBT/issues/72)
+
 ## [0.0.13](https://github.com/officel/SVBT/compare/v0.0.12...v0.0.13) (2025-09-15)
 
 ### Bug Fixes
