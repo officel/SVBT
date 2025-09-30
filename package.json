@@ -101,7 +101,7 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@vscode/vsce": "^3.6.0"
+    "@vscode/vsce": "^3.6.2"
   },
   "overrides": {
     "rimraf": "^4.0.0",
