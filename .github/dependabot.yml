@@ -13,3 +13,12 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      # MEMO: 多数のプルリクエストを管理せずに済むように、メジャーバージョン以外のパッケージバージョンアップデートを単一の PR にまとめる。
+      # see https://dev.classmethod.jp/articles/dependabot-grouped-updates-isolating-specific-dependencies/
+      minor-and-patch:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch
