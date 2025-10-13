@@ -92,7 +92,7 @@
     "@types/jest": "^30.0.0",
     "@types/node": "24.x",
     "@types/vscode": "^1.104.0",
-    "conventional-changelog-cli": "^5.0.0",
+    "conventional-changelog-cli": "^4.1.0",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.4",
     "ts-loader": "^9.5.4",
