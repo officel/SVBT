@@ -20,6 +20,9 @@ tasks:
           $ cd ../SVBT/
           $ gr                 # git fetch --all --prune && git checkout origin/HEAD
           $ t                  # task
+          $ npx npm-check-updates
+          $ npx npm-check-updates -u
+          $ npm install
           $ t d
           $ t test
 
