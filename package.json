@@ -21,7 +21,7 @@
   "publisher": "officel",
   "icon": "resources/icon.png",
   "engines": {
-    "vscode": "^1.100.0"
+    "vscode": "^1.105.0"
   },
   "categories": [
     "Other"
