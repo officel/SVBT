@@ -101,7 +101,7 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@vscode/vsce": "^3.6.2",
+    "@vscode/vsce": "^3.7.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-core": "^7.0.0",
     "conventional-changelog-preset-loader": "^5.0.0"
