@@ -86,13 +86,14 @@
     "package": "webpack --mode production --devtool hidden-source-map",
     "vscode:vsix": "npx vsce package",
     "vscode:prepublish": "npm run package",
-    "changelog": "node scripts/update-changelog.js"
+    "changelog": "conventional-changelog -p conventionalcommits -i CHANGELOG.md -s"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
     "@types/node": "24.x",
     "@types/vscode": "^1.105.0",
     "conventional-changelog": "^7.1.1",
+    "conventional-changelog-conventionalcommits": "^9.1.0",
     "jest": "^30.2.0",
     "ts-jest": "^29.4.5",
     "ts-loader": "^9.5.4",
@@ -101,10 +102,7 @@
     "webpack-cli": "^6.0.1"
   },
   "dependencies": {
-    "@vscode/vsce": "^3.6.2",
-    "conventional-changelog-conventionalcommits": "^9.1.0",
-    "conventional-changelog-core": "^7.0.0",
-    "conventional-changelog-preset-loader": "^5.0.0"
+    "@vscode/vsce": "^3.6.2"
   },
   "overrides": {
     "rimraf": "^4.0.0",
