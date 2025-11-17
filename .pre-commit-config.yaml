@@ -35,6 +35,7 @@ repos:
         exclude: |
           (?x)^(
             backup/[\d|\w|_]+\/(.*?)|
+            .changes\/(.*?)|
             path/to/file3.py
           )$
 
