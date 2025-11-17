@@ -1,21 +1,8 @@
 # Changelog
 
-## <small>0.0.15 (2025-11-04)</small>
+## [0.0.15](https://github.com/officel/SVBT/compare/v0.0.14...v0.0.15) (2025-11-04)
 
-- chore: bump packages (#94) ([9ca3dd1](https://github.com/officel/SVBT/commit/9ca3dd1)), closes [#94](https://github.com/officel/SVBT/issues/94) [#93](https://github.com/officel/SVBT/issues/93)
-- chore(dependabot): use groups setting on dependabot (#90) ([994c016](https://github.com/officel/SVBT/commit/994c016)), closes [#90](https://github.com/officel/SVBT/issues/90)
-- chore(deps-dev): bump @types/node from 24.3.0 to 24.5.2 (#82) ([00d533f](https://github.com/officel/SVBT/commit/00d533f)), closes [#82](https://github.com/officel/SVBT/issues/82)
-- chore(deps-dev): bump @types/node in the minor-and-patch group (#99) ([809258b](https://github.com/officel/SVBT/commit/809258b)), closes [#99](https://github.com/officel/SVBT/issues/99)
-- chore(deps-dev): bump @types/vscode from 1.103.0 to 1.104.0 (#83) ([5b94ff5](https://github.com/officel/SVBT/commit/5b94ff5)), closes [#83](https://github.com/officel/SVBT/issues/83)
-- chore(deps-dev): bump conventional-changelog-cli from 4.1.0 to 5.0.0 (#92) ([0bf52e9](https://github.com/officel/SVBT/commit/0bf52e9)), closes [#92](https://github.com/officel/SVBT/issues/92)
-- chore(deps-dev): bump jest from 30.1.1 to 30.1.3 (#80) ([939e29d](https://github.com/officel/SVBT/commit/939e29d)), closes [#80](https://github.com/officel/SVBT/issues/80)
-- chore(deps-dev): bump jest from 30.1.3 to 30.2.0 (#85) ([44e2d2e](https://github.com/officel/SVBT/commit/44e2d2e)), closes [#85](https://github.com/officel/SVBT/issues/85)
-- chore(deps-dev): bump ts-jest from 29.4.1 to 29.4.4 (#81) ([1ca67d4](https://github.com/officel/SVBT/commit/1ca67d4)), closes [#81](https://github.com/officel/SVBT/issues/81)
-- chore(deps-dev): bump webpack from 5.101.3 to 5.102.0 (#89) ([6396f2e](https://github.com/officel/SVBT/commit/6396f2e)), closes [#89](https://github.com/officel/SVBT/issues/89)
-- chore(deps-dev): bump webpack in the minor-and-patch group (#91) ([e110f4f](https://github.com/officel/SVBT/commit/e110f4f)), closes [#91](https://github.com/officel/SVBT/issues/91)
-- chore(deps): bump @vscode/vsce from 3.6.0 to 3.6.2 (#84) ([dd7df5e](https://github.com/officel/SVBT/commit/dd7df5e)), closes [#84](https://github.com/officel/SVBT/issues/84)
-- fix: package conventional-changelog-cli to conventional-changelog (#96) ([ffdc9f3](https://github.com/officel/SVBT/commit/ffdc9f3)), closes [#96](https://github.com/officel/SVBT/issues/96) [#95](https://github.com/officel/SVBT/issues/95)
-- ci: package ecosystem to npm (#79) ([aa8cbab](https://github.com/officel/SVBT/commit/aa8cbab)), closes [#79](https://github.com/officel/SVBT/issues/79)
+- パッケージの更新いろいろ
 
 ## [0.0.14](https://github.com/officel/SVBT/compare/v0.0.13...v0.0.14) (2025-09-19)
 
