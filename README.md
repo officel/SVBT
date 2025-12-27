@@ -71,6 +71,21 @@ You can customize the timer by changing the following settings in your VS Code `
 }
 ```
 
+### Example Keyboard shortcut
+
+- Type to `, v` start SVBT(oem_102 is `,`)
+- Why use `v` ? because I already using both `s` and `t`. :-)
+
+```json:keybingings.json
+[
+  {
+    // Start SVBT
+    "key": "oem_102 v",
+    "command": "simple-visual-bar-timer.startTimer"
+  }
+]
+```
+
 ## Note
 
 - [Status Bar | Visual Studio Code Extension API](https://code.visualstudio.com/api/ux-guidelines/status-bar)
