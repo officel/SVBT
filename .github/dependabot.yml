@@ -13,6 +13,8 @@ updates:
       dependencies:
         patterns:
           - "*"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
@@ -21,6 +23,8 @@ updates:
       dependencies:
         patterns:
           - "*"
+    cooldown:
+      default-days: 7
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
@@ -34,3 +38,5 @@ updates:
         update-types:
           - minor
           - patch
+    cooldown:
+      default-days: 7
