@@ -8,27 +8,29 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       dependencies:
         patterns:
           - "*"
     cooldown:
       default-days: 7
+
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       dependencies:
         patterns:
           - "*"
     cooldown:
       default-days: 7
+
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     groups:
       # MEMO: 多数のプルリクエストを管理せずに済むように、メジャーバージョン以外のパッケージバージョンアップデートを単一の PR にまとめる。
       # see https://dev.classmethod.jp/articles/dependabot-grouped-updates-isolating-specific-dependencies/
