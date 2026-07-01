@@ -26,7 +26,7 @@ repos:
       - id: actionlint
 
   - repo: https://github.com/jackdewinter/pymarkdown
-    rev: 6d3c1b70d44ea2202b23552af93aca3b5017ee83  # frozen: v0.9.36
+    rev: 5a91b386476b633c4a594951397139aa5ab45a78  # frozen: v0.9.38
     hooks:
       - id: pymarkdown
         args:
