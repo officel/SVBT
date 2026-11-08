@@ -2,11 +2,20 @@ import { Timer } from "./Timer";
 
 jest.useFakeTimers();
 
+afterEach(() => {
+  jest.clearAllTimers();
+});
+
 describe("Timer Countdown", () => {
-  it("should correctly initialize with the given duration", () => {
+  it("should count down from the given duration", () => {
     const timer = new Timer(60, "countdown");
-    // This is an internal detail, but for the sake of a simple test:
-    expect((timer as any).remainingSeconds).toBe(60);
+    const tickHandler = jest.fn();
+
+    timer.on("tick", tickHandler);
+    timer.start();
+    jest.advanceTimersByTime(1000);
+
+    expect(tickHandler).toHaveBeenCalledWith(59);
   });
 
   it("should emit a 'tick' event every second with remaining time", () => {
@@ -35,8 +44,8 @@ describe("Timer Countdown", () => {
     jest.advanceTimersByTime(3000);
 
     expect(doneHandler).toHaveBeenCalledTimes(1);
-    // The interval should be cleared
-    expect((timer as any).timerId).toBeNull();
+    jest.advanceTimersByTime(3000);
+    expect(doneHandler).toHaveBeenCalledTimes(1);
   });
 
   it("should stop the timer when stop() is called", () => {
@@ -51,23 +60,22 @@ describe("Timer Countdown", () => {
 
     timer.stop();
 
-    // The interval should be cleared
-    expect((timer as any).timerId).toBeNull();
-
     jest.advanceTimersByTime(5000);
     // No more ticks should have been emitted
     expect(tickHandler).toHaveBeenCalledTimes(5);
   });
 
-  it("should not start a new timer if one is already running", () => {
+  it("should not create another ticking interval if already running", () => {
     const timer = new Timer(60, "countdown");
+    const tickHandler = jest.fn();
+
+    timer.on("tick", tickHandler);
     timer.start();
-    const firstTimerId = (timer as any).timerId;
+    timer.start();
+    jest.advanceTimersByTime(1000);
 
-    timer.start(); // Try to start again
-    const secondTimerId = (timer as any).timerId;
-
-    expect(firstTimerId).toBe(secondTimerId);
+    expect(tickHandler).toHaveBeenCalledTimes(1);
+    expect(tickHandler).toHaveBeenCalledWith(59);
   });
 });
 
@@ -98,8 +106,8 @@ describe("Timer Countup", () => {
     jest.advanceTimersByTime(3000);
 
     expect(doneHandler).toHaveBeenCalledTimes(1);
-    // The interval should be cleared
-    expect((timer as any).timerId).toBeNull();
+    jest.advanceTimersByTime(3000);
+    expect(doneHandler).toHaveBeenCalledTimes(1);
   });
 
   it("should not tick past the duration", () => {
