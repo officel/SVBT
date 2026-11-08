@@ -35,6 +35,15 @@ describe("validateDurationInput", () => {
     );
   });
 
+  test.each(["1abc", "1.5", "1e2"])(
+    "should reject non-integer input %s",
+    (value) => {
+      expect(extension.validateDurationInput(value, MAX_DURATION)).toBe(
+        "Please enter a number between 1 and 200."
+      );
+    }
+  );
+
   test("should return error message for value less than 1", () => {
     expect(extension.validateDurationInput("0", MAX_DURATION)).toBe(
       "Please enter a number between 1 and 200."
@@ -53,6 +62,7 @@ describe("extension activation", () => {
   let commandHandlers: { [key: string]: (...args: any[]) => any };
   let mockContext: any;
   let mockVscode: any;
+  let mockConfiguration: { [key: string]: any };
 
   beforeEach(() => {
     jest.resetModules();
@@ -87,6 +97,13 @@ describe("extension activation", () => {
         push: jest.fn(),
       },
     };
+    mockConfiguration = {
+      defaultDuration: 25,
+      remainingChar: "▮",
+      elapsedChar: "▯",
+      barCount: 10,
+      timerMode: "countdown",
+    };
 
     mockVscode.window.createStatusBarItem.mockReturnValue(mockStatusBarItem);
     mockVscode.commands.registerCommand.mockImplementation(
@@ -96,25 +113,17 @@ describe("extension activation", () => {
       }
     );
     mockVscode.workspace.getConfiguration.mockReturnValue({
-      get: jest.fn((key: string, defaultValue: any) => {
-        switch (key) {
-          case "defaultDuration":
-            return 25;
-          case "remainingChar":
-            return "▮";
-          case "elapsedChar":
-            return "▯";
-          case "barCount":
-            return 10;
-          case "timerMode":
-            return "countdown";
-          default:
-            return defaultValue;
-        }
-      }),
+      get: jest.fn(
+        (key: string, defaultValue: any) =>
+          mockConfiguration[key] ?? defaultValue
+      ),
     });
 
     extension = require("./extension");
+  });
+
+  afterEach(() => {
+    extension.deactivate();
   });
 
   test("should register commands and create status bar item on activation", () => {
@@ -161,4 +170,126 @@ describe("extension activation", () => {
     expect(mockStatusBarItem.text).toContain("集中して作業中");
     expect(mockStatusBarItem.text).toMatch(/⦿ \d{2}:\d{2} .* 集中して作業中/);
   });
+
+  test("startTimer command should leave the status bar unchanged when duration is canceled", async () => {
+    extension.activate(mockContext);
+    const startTimerHandler =
+      commandHandlers["simple-visual-bar-timer.startTimer"];
+    mockVscode.window.showInputBox.mockResolvedValueOnce(undefined);
+
+    await startTimerHandler();
+
+    expect(mockVscode.window.showInputBox).toHaveBeenCalledTimes(1);
+    expect(mockStatusBarItem.text).toBe("⧁ SVBT");
+    expect(mockStatusBarItem.command).toBe(
+      "simple-visual-bar-timer.startTimer"
+    );
+  });
+
+  test("startTimer command should ignore a second start while a timer is running", async () => {
+    extension.activate(mockContext);
+    const startTimerHandler =
+      commandHandlers["simple-visual-bar-timer.startTimer"];
+    mockVscode.window.showInputBox
+      .mockResolvedValueOnce("1")
+      .mockResolvedValueOnce("My Task");
+
+    await startTimerHandler();
+    const activeText = mockStatusBarItem.text;
+
+    await startTimerHandler();
+
+    expect(mockVscode.window.showInputBox).toHaveBeenCalledTimes(2);
+    expect(mockStatusBarItem.text).toBe(activeText);
+  });
+
+  test("stopTimer command should stop the timer and restore the start status", async () => {
+    extension.activate(mockContext);
+    const startTimerHandler =
+      commandHandlers["simple-visual-bar-timer.startTimer"];
+    mockVscode.window.showInputBox
+      .mockResolvedValueOnce("1")
+      .mockResolvedValueOnce("My Task");
+
+    await startTimerHandler();
+    const stopTimerHandler =
+      commandHandlers["simple-visual-bar-timer.stopTimer"];
+    stopTimerHandler();
+    const stoppedText = mockStatusBarItem.text;
+
+    jest.advanceTimersByTime(5000);
+
+    expect(stoppedText).toBe("⧁ Start Timer");
+    expect(mockStatusBarItem.command).toBe(
+      "simple-visual-bar-timer.startTimer"
+    );
+    expect(mockStatusBarItem.text).toBe(stoppedText);
+  });
+
+  test("deactivate should stop the active timer", async () => {
+    extension.activate(mockContext);
+    const startTimerHandler =
+      commandHandlers["simple-visual-bar-timer.startTimer"];
+    mockVscode.window.showInputBox
+      .mockResolvedValueOnce("1")
+      .mockResolvedValueOnce("My Task");
+
+    await startTimerHandler();
+    jest.advanceTimersByTime(1000);
+    const activeText = mockStatusBarItem.text;
+
+    extension.deactivate();
+    jest.advanceTimersByTime(5000);
+
+    expect(mockStatusBarItem.text).toBe(activeText);
+  });
+
+  test("countup mode should render elapsed time and configured progress characters", async () => {
+    mockConfiguration.timerMode = "countup";
+    mockConfiguration.remainingChar = "R";
+    mockConfiguration.elapsedChar = "E";
+    mockConfiguration.barCount = 6;
+    extension.activate(mockContext);
+    const startTimerHandler =
+      commandHandlers["simple-visual-bar-timer.startTimer"];
+    mockVscode.window.showInputBox
+      .mockResolvedValueOnce("1")
+      .mockResolvedValueOnce("My Task");
+
+    await startTimerHandler();
+    expect(mockStatusBarItem.text).toBe("⦿ 00:00 EEEEEE My Task");
+
+    jest.advanceTimersByTime(30000);
+
+    expect(mockStatusBarItem.text).toBe("⦿ 00:30 RRREEE My Task");
+
+    jest.advanceTimersByTime(30000);
+
+    expect(mockStatusBarItem.text).toBe("⧁ Start Timer");
+    expect(mockStatusBarItem.command).toBe(
+      "simple-visual-bar-timer.startTimer"
+    );
+  });
+
+  test.each([
+    [2, 5],
+    [99, 30],
+  ])(
+    "barCount %i should be clamped to %i",
+    async (configuredCount, expectedCount) => {
+      mockConfiguration.barCount = configuredCount;
+      extension.activate(mockContext);
+      const startTimerHandler =
+        commandHandlers["simple-visual-bar-timer.startTimer"];
+      mockVscode.window.showInputBox
+        .mockResolvedValueOnce("1")
+        .mockResolvedValueOnce("My Task");
+
+      await startTimerHandler();
+
+      expect(mockStatusBarItem.text).toBe(
+        `⦿ 01:00 ${"▮".repeat(expectedCount)} My Task`
+      );
+    }
+  );
 });

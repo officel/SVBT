@@ -122,8 +122,8 @@ export function validateDurationInput(
   value: string,
   maxDuration: number
 ): string | null {
-  const number = parseInt(value, 10);
-  if (isNaN(number) || number < 1 || number > maxDuration) {
+  const number = Number(value);
+  if (!/^\d+$/.test(value) || number < 1 || number > maxDuration) {
     return `Please enter a number between 1 and ${maxDuration}.`;
   }
   return null;
