@@ -6,8 +6,9 @@ I appreciate your consideration to contribute to this project! This document is 
 
 ### Prerequisites
 
-- VS Code
-- Node.js
+- VS Code 1.145 or later
+- Node.js 22 or later
+- pnpm 10.8.1
 - pre-commit
 - (Optional) [Task](https://taskfile.dev/)
 
@@ -23,15 +24,22 @@ I appreciate your consideration to contribute to this project! This document is 
 
    ```bash
    cd SVBT
-   npm install
+   pnpm install
    ```
 
 ### Development
 
 The main scripts used during development are:
 
-- `npm run lint`: Runs lint on your code. or `task`
-- `npm run test`: Runs unit tests.
+- `task`: Lists and runs project tasks.
+- `pnpm test`: Runs unit tests.
+- `pnpm run typecheck`: Checks types with TypeScript 7.
+- `pnpm run vscode:vsix`: Builds and packages the extension.
+
+TypeScript 7 is installed as `@typescript/native` for the `tsc` command.
+The `typescript` alias provides the TypeScript 6 JavaScript API required by
+ts-jest and ts-loader. Keep both when updating dependencies; the `npm:` alias
+protocol is understood by pnpm and does not invoke the npm CLI.
 
 ## How to Contribute
 
@@ -94,10 +102,10 @@ If you find a bug or have a feature request, please open an issue on GitHub.
 ### Testing
 
 - If you make changes, add unit tests or make sure that the existing tests pass.
-- Tests are powered by [Vitest](https://vitest.dev/). When adding tests, try to increase test coverage.
+- Tests are powered by Jest. When adding tests, try to increase test coverage.
 
 > [!ATTENTION]
-> We haven't prepared vitest yet; only npm run test is available.
+> A separate lint task is not configured yet; use `pnpm test` to run the test suite.
 
 ### Pull Requests
 

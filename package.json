@@ -1,5 +1,6 @@
 {
   "name": "simple-visual-bar-timer",
+  "packageManager": "pnpm@10.8.1",
   "displayName": "Simple Visual Bar Timer",
   "description": "A simple visual bar timer in the status bar.",
   "keywords": [
@@ -21,7 +22,8 @@
   "publisher": "officel",
   "icon": "resources/icon.png",
   "engines": {
-    "vscode": "^1.105.0"
+    "node": ">=22",
+    "vscode": "^1.145.0"
   },
   "categories": [
     "Other"
@@ -81,29 +83,35 @@
   "type": "module",
   "scripts": {
     "watch": "webpack --watch",
+    "typecheck": "tsc --noEmit",
     "test": "jest",
     "dev": "webpack --mode development",
     "package": "webpack --mode production --devtool hidden-source-map",
-    "vscode:vsix": "npx vsce package",
-    "vscode:prepublish": "npm run package"
+    "vscode:vsix": "pnpm run package && vsce package --no-dependencies",
+    "vscode:publish": "pnpm run package && vsce publish --no-dependencies"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/node": "25.x",
-    "@types/vscode": "^1.120.0",
-    "jest": "^30.4.2",
-    "ts-jest": "^29.4.11",
-    "ts-loader": "^9.5.7",
-    "typescript": "^5.9.3",
-    "webpack": "^5.107.2",
-    "webpack-cli": "^7.0.3"
+    "@types/node": "~26.6.6",
+    "@types/vscode": "^1.145.0",
+    "@typescript/native": "npm:typescript@^7.0.2",
+    "jest": "^30.5.2",
+    "ts-jest": "^29.4.15",
+    "ts-loader": "^9.6.2",
+    "typescript": "npm:@typescript/typescript6@^6.0.2",
+    "webpack": "^5.112.2",
+    "webpack-cli": "^7.3.1"
   },
   "dependencies": {
-    "@vscode/vsce": "^3.9.1"
+    "@vscode/vsce": "^4.1.0"
   },
-  "overrides": {
-    "rimraf": "^4.0.0",
-    "glob": "^9.0.0"
+  "pnpm": {
+    "overrides": {
+      "rimraf": "^4.0.0",
+      "glob": "^14.0.4",
+      "minimatch": "^11.0.5",
+      "js-yaml@4": "^4.3.2"
+    }
   },
   "files": [
     "dist/extension.cjs",

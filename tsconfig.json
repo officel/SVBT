@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "preserve",
     "target": "ES2020",
     "outDir": "out",
     "sourceMap": true,
     "strict": true,
+    "esModuleInterop": true,
+    "types": ["node", "jest"],
     "rootDir": "src",
-    "moduleResolution": "node"
+    "moduleResolution": "bundler"
   },
   "include": ["src"],
   "exclude": ["node_modules", ".vscode-test"]

@@ -27,6 +27,7 @@ updates:
     cooldown:
       default-days: 7
 
+  # Dependabot uses the "npm" ecosystem identifier for pnpm projects.
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
