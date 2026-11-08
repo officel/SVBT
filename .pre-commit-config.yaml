@@ -1,16 +1,10 @@
 ---
 # https://pre-commit.com/
 repos:
-  - repo: https://github.com/pre-commit/pre-commit-hooks.git
+  - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: 3e8a8703264a2f4a69428a0aa4dcb512790b2c8c  # frozen: v6.0.0
     hooks:
       - id: check-json
-        exclude: |
-          (?x)^(
-            backup/[\d|\w|_]+\/(.*?)|
-            docs/nodejs/ts_tutorial/tsconfig.json|
-            path/to/file3.json
-          )$
       - id: check-yaml
         args:
           - --allow-multiple-documents
@@ -19,35 +13,44 @@ repos:
       - id: detect-private-key
       - id: end-of-file-fixer
       - id: trailing-whitespace
+      - id: check-merge-conflict
 
-  - repo: https://github.com/rhysd/actionlint
-    rev: 914e7df21a07ef503a81201c76d2b11c789d3fca  # frozen: v1.7.12
+  - repo: https://github.com/betterleaks/betterleaks
+    rev: 8d77e1712fb06fd14444cc648686f1d5655e28a8  # frozen: v1.10.0
+    hooks:
+      - id: betterleaks
+
+  - repo: https://github.com/kjanat/actionlint
+    rev: 08bb2c4f0d039744455b87aef1c647fb8b66d37b  # frozen: v1.17.0
     hooks:
       - id: actionlint
 
-  - repo: https://github.com/jackdewinter/pymarkdown
-    rev: 6d3c1b70d44ea2202b23552af93aca3b5017ee83  # frozen: v0.9.36
+  - repo: https://github.com/jdx/jactionlint
+    rev: 9e87e8f34edfc00b849a27807e26eff9d00b936d  # frozen: v2.5.0
     hooks:
-      - id: pymarkdown
-        args:
-          - --config=.config/.pymarkdown.yaml
-          - scan
-        exclude: |
-          (?x)^(
-            backup/[\d|\w|_]+\/(.*?)|
-            .changes\/(.*?)|
-            path/to/file3.py
-          )$
+      - id: jactionlint
 
-  - repo: https://github.com/adrienverge/yamllint.git
-    rev: cba56bcde1fdd01c1deb3f945e69764c291a6530  # frozen: v1.38.0
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: 06a39750ec31860bb44f2acf67182c40016cd1e7  # frozen: v1.32.0
     hooks:
-      - id: yamllint
-        args:
-          - -c=.config/.yamllint
+      - id: zizmor
+
+  - repo: https://github.com/rvben/rumdl-pre-commit
+    rev: b0cff962ee693b9e612c097d22e71e0cba127447  # frozen: v0.3.2
+    hooks:
+      - id: rumdl
+        args: ["--fix"]
+      - id: rumdl-fmt
+
+  - repo: https://github.com/owenlamont/ryl-pre-commit
+    rev: 28e47001bb1d516a8197b1f60ef6c526029ed9d5  # frozen: v0.29.0
+    hooks:
+      - id: ryl-check
+        args: ["--fix"]
+        types_or: [yaml, markdown]
 
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: 91ab4bf57e58b32adf1a122681f6ebe164d081c8  # frozen: v4.4.0
+    rev: 33b50eb042bee26eac0ee96ad84aa9c1b4dccdd8  # frozen: v4.5.0
     hooks:
       - id: conventional-pre-commit
         stages: [commit-msg]

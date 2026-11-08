@@ -20,9 +20,9 @@ tasks:
           $ cd ../SVBT/
           $ gr                 # git fetch --all --prune && git checkout origin/HEAD
           $ t                  # task
-          $ npx npm-check-updates
-          $ npx npm-check-updates -u
-          $ npm install
+          $ pnpm outdated
+          $ pnpm up --latest
+          $ pnpm install
           $ t d
           $ t test
 
@@ -43,42 +43,42 @@ tasks:
     aliases:
       - w
     cmds:
-      - npm run watch
+      - pnpm run watch
 
   dev:
     desc: for development
     aliases:
       - d
     cmds:
-      - npm run dev
+      - pnpm run dev
 
   test:
     desc: for running tests
     aliases:
       - test
     cmds:
-      - npm run test
+      - pnpm test
 
   package:
     desc: for production
     aliases:
       - p
     cmds:
-      - npm run package
+      - pnpm run package
 
   vscode:vsix:
     desc: create a .vsix file
     aliases:
       - vsix
     cmds:
-      - npx vsce package
+      - pnpm run vscode:vsix
 
   vscode:prepublish:
     desc: run tasks before publishing
     aliases:
       - vpp
     cmds:
-      - npm run package
+      - pnpm run package
 
   vscode:publish:
     desc: publish for Marketplace
@@ -88,7 +88,7 @@ tasks:
     aliases:
       - vp
     cmds:
-      - npx vsce publish
+      - pnpm run vscode:publish
 
   pre-release:
     desc: run tasks before releasing
@@ -100,10 +100,10 @@ tasks:
       # デフォルトは patch なので、 task pr とするだけでよい
       VERSION:
         sh: |
-          npm version {{.INPUT_VERSION}} --no-git-tag-version | tail -n 1
-      # package.json と package-lock.json の version が更新される
+          pnpm version {{.INPUT_VERSION}} --no-git-tag-version | tail -n 1
+      # package.json の version が更新される
     cmds:
       - echo {{.INPUT_VERSION}}
       - echo {{.VERSION}}
-      - npm ci
-      - npm run changelog
+      - pnpm install --frozen-lockfile
+      - pnpm dlx conventional-changelog-cli -p angular -i CHANGELOG.md -s

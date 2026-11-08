@@ -4,6 +4,8 @@
 
 A simple visual bar timer in the VS Code status bar.
 
+Requires VS Code 1.145 or later.
+
 ## Features
 
 - **Status Bar Timer**: A timer that runs in the status bar.
@@ -93,6 +95,11 @@ You can customize the timer by changing the following settings in your VS Code `
 ## Contributing
 
 Feel free to open an issue or submit a pull request.
+
+Development requires Node.js 22 or later and pnpm 10.8.1. Run
+`pnpm install --frozen-lockfile`, `pnpm run typecheck`, `pnpm test`, and
+`pnpm run vscode:vsix` to install, validate, and package the extension.
+See [the contribution guide](.github/CONTRIBUTING.md) for the compiler compatibility setup.
 
 ## License
 
